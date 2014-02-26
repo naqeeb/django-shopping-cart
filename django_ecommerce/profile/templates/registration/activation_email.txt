@@ -1,0 +1,7 @@
+Welcome to Django ecommerece 2.0. 
+
+Click here to activate your account:
+http://{{site.domain}}{% url 'registration_activate' activation_key %}
+
+You have {{expiration_days}} days to activate.
+
