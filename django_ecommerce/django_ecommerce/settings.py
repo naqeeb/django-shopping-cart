@@ -1,5 +1,5 @@
 """
-Django settings for django_shopping_cart project.
+Django settings for django_ecommerce project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'registration',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_shopping_cart.urls'
+ROOT_URLCONF = 'django_ecommerce.urls'
 
-WSGI_APPLICATION = 'django_shopping_cart.wsgi.application'
+WSGI_APPLICATION = 'django_ecommerce.wsgi.application'
 
 
 # Database
@@ -58,7 +61,7 @@ WSGI_APPLICATION = 'django_shopping_cart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR + '/db/', 'db.sqlite3'),
     }
 }
 
@@ -75,6 +78,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+ACCOUNT_ACTIVATION_DAYS = 7
+
+REGISTRATION_OPEN = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
