@@ -6,12 +6,18 @@ class Store(models.Model):
     name = models.CharField(max_length=255)
     site = models.OneToOneField(Site)
 
+    def __unicode__(self):
+        return u'%s' % (self.name)
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
     sku = models.CharField(max_length=255, null=True)
     store = models.ManyToManyField(Store, through='StoreProduct')
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class StoreProduct(models.Model):
     store = models.ForeignKey(Store)
@@ -20,6 +26,9 @@ class StoreProduct(models.Model):
 
 class ProductAttribute(models.Model):
     name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return u'%s' % (self.name)
 
 class ProductAttributeValue(models.Model):
     product = models.ForeignKey(Product)
