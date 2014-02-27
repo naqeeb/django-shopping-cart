@@ -1,0 +1,10 @@
+<div name="header">Welcome to {{store.name}}</div>
+<div name="content">
+Here are all of the products we offer:
+{% for product in products %}
+    <div name="product">
+        <div>{{product.name}}</div>
+        <div><a href="{% url 'product_detail' product.sku %}">Product Details</a></div>
+    </div>
+{% endfor %}
+</div>
