@@ -10,6 +10,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
+    sku = models.CharField(max_length=255, null=True)
     store = models.ManyToManyField(Store, through='StoreProduct')
 
 class StoreProduct(models.Model):
@@ -27,7 +28,8 @@ class ProductAttributeValue(models.Model):
 
 class Cart(models.Model):
     store = models.ForeignKey(Store)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True, blank=True)
+    session = models.CharField(max_length=255, null=True, blank=True)
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart)
@@ -39,7 +41,7 @@ class Order(models.Model):
     user = models.ForeignKey(User)
     status = models.CharField(max_length=100)
     total = models.DecimalField(max_digits=9, decimal_places=2)
-    
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order)
     product = models.ForeignKey(Product)
