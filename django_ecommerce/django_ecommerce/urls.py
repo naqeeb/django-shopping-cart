@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('profile.urls')),
     url(r'^product/', include('product.urls')),
     url(r'^carts/', include('cart.urls')),
+    url(r'^checkout/', include('checkout.urls')),
     url(r'', views.home, name='home'),
 )
