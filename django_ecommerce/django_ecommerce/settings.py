@@ -36,8 +36,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_extensions',
+    'django_ecommerce',
     'registration',
+    'core',
+    'cart',
+    'checkout',
+    'product',
+    'localflavor',
+    'profile',
     'south'
 )
 
@@ -78,11 +86,25 @@ USE_L10N = True
 
 USE_TZ = True
 
-ACCOUNT_ACTIVATION_DAYS = 7
-
-REGISTRATION_OPEN = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+### Third Party Configurations ###
+
+# Auth Profile
+AUTH_PROFILE_MODULE = "profile.UserProfile"
+
+# sites
+SITE_ID = 1
+
+# django-registration
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_OPEN = True
+DEFAULT_FROM_EMAIL = 'info@ordergroove.com'
+
+# djrill
+MANDRILL_API_KEY = "vNNY9fltdIHbLtrH2YU0RA"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
