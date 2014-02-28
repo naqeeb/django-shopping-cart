@@ -19,6 +19,9 @@ class Order(models.Model):
     status = models.CharField(max_length=100)
     total = models.DecimalField(max_digits=9, decimal_places=2)
 
+    def __unicode__(self):
+        return u'%s|%s' % (self.store.name, self.external_id)
+
     class Meta:
         db_table = 'orders'
 

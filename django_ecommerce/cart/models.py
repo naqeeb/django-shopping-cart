@@ -10,6 +10,8 @@ class Cart(models.Model):
     session = models.CharField(max_length=255, null=True, blank=True)
     total = models.DecimalField(max_digits=9, decimal_places=2, default=0)
 
+    def __unicode__(self):
+        return u'%s|%s' % (self.store.name, self.user.email)
 
     class Meta:
         db_table = 'cart'
@@ -19,7 +21,6 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product)
     quantity = models.IntegerField()
     total = models.DecimalField(max_digits=9, decimal_places=2, default=0)
-
 
     class Meta:
         db_table = 'cart_item'
