@@ -28,9 +28,9 @@ In separate terminals run the following commands
 
 ### Store 1
 
-python manage.py runserver syncdb --settings django_ecommerce.settings.store1
+python manage.py syncdb --settings django_ecommerce.settings.store1
 
-python manage.py runserver migrate --settings django_ecommerce.settings.store1
+python manage.py migrate --settings django_ecommerce.settings.store1
 
 python manage.py loaddata fixtures/initial_data.json --settings django_ecommerce.settings.store1
 
@@ -38,9 +38,9 @@ python manage.py runserver 8000 --settings django_ecommerce.settings.store1
 
 ### Store 2
 
-python manage.py runserver syncdb --settings django_ecommerce.settings.store2
+python manage.py syncdb --settings django_ecommerce.settings.store2
 
-python manage.py runserver migrate --settings django_ecommerce.settings.store2
+python manage.py migrate --settings django_ecommerce.settings.store2
 
 python manage.py loaddata fixtures/initial_data.json --settings django_ecommerce.settings.store2
 

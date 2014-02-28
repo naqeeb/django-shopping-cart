@@ -4,8 +4,16 @@
         <div>{{product.name}}</div><br/>
         <div>SKU</div>
         <div>{{product.sku}}</div><br/>
+        <div>Price</div>
+        <div>{{product.price}}</div><br/>
         <div>Description</div>
         <div>{{product.description}}</div><br/>
+        <div>Additional Information</div>
+        {% for attribute in product_attributes %}
+            <div name="cart-item" style="font-size: 16px">
+                <div>{{ attribute.attribute.name }} | {{ attribute.value }}</div>
+            </div>
+        {% endfor %}
         <!-- Add to Cart -->
         <form action="{% url 'add_product_to_cart' %}" method="post">
             {% csrf_token %}

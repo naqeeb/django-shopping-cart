@@ -63,7 +63,7 @@
   "fields": {
     "sku": "AAPL-FAIL-1",
     "price": "99.99",
-    "name": "Apple IPod",
+    "name": "Apple iPod",
     "description": "People still buy these things"
   }
 },
@@ -119,7 +119,7 @@
   "fields": {
     "active": true,
     "product": 3,
-    "store": 1
+    "store": 3
   }
 },
 {
@@ -128,7 +128,7 @@
   "fields": {
     "active": true,
     "product": 3,
-    "store": 1
+    "store": 3
   }
 },
 
@@ -158,6 +158,13 @@
   "model": "product.productattribute",
   "fields": {
     "name": "fun_factor"
+  }
+},
+{
+  "pk": 5,
+  "model": "product.productattribute",
+  "fields": {
+    "name": "image_url"
   }
 },
 {
