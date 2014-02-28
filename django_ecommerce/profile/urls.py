@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+import signals
 
 urlpatterns = patterns('',
     # Examples:

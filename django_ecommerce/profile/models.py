@@ -5,11 +5,10 @@ from django.contrib.auth.models import User
 from localflavor.us.models import USStateField
 
 from core import constants
-from core.models import Store
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    store = models.ManyToManyField(Store, through='UserStoreProfile')
+    store = models.ManyToManyField('core.Store', through='UserStoreProfile')
 
     class Meta:
         db_table = 'user_profile'
@@ -17,7 +16,7 @@ class UserProfile(models.Model):
 
 class UserStoreProfile(models.Model):
     user =  models.ForeignKey(UserProfile)
-    store = models.ForeignKey(Store)
+    store = models.ForeignKey('core.Store')
 
     class Meta:
         db_table = 'user_store_profile'
