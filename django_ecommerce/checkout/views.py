@@ -30,6 +30,7 @@ def checkout(request, template_name='checkout/complete.html'):
     order = Order.objects.create(store=store, user=request.user, external_id=order_number, total=cart.total, status='New')
     response['order'] = order
 
+    # Convert cart to order
     order_items = []
     for cart_item in cart_items:
         order_item = OrderItem.objects.create(order=order, quantity=cart_item.quantity, price=cart_item.product.price, product=cart_item.product)
@@ -40,5 +41,3 @@ def checkout(request, template_name='checkout/complete.html'):
     cart.delete()
 
     return render_to_response(template_name, response, context_instance=RequestContext(request))
-    pass
-    # Convert cart to order
