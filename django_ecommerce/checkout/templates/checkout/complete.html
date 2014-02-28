@@ -1,0 +1,14 @@
+<div name="header"></div>
+<div name="content">
+    Your order is now complete.  Your order number is {{order.external_id}}
+    <div name="checkout" style="display: table; width:100%;">
+    {% for item in order_items %}
+        <div name="order-item" style="font-size: 16px">
+            <div>{{ item.product.name }} | {{ item.quantity }} | {{ item.price }} | {{ item.total }}</div>
+        </div>
+    {% endfor %}
+        <div name="order" style="font-size: 16px">
+            <div>Total: {{ order.total }} </div>
+        </div>
+    </div>
+</div>

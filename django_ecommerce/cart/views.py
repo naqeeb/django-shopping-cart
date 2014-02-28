@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import get_current_site
 from django.db.models import F
 from django.shortcuts import redirect, render_to_response, get_object_or_404
@@ -5,11 +8,11 @@ from django.template import RequestContext
 
 from core.models import Store
 from product.models import Product, StoreProduct
-
 from .models import Cart, CartItem
 from .forms import AddProductToCartForm
 
 
+@login_required
 def view_cart(request, cart_id, template_name='cart/cart.html'):
     response = {
         'store': None,
@@ -25,11 +28,14 @@ def view_cart(request, cart_id, template_name='cart/cart.html'):
 
     response['store'] = store
     cart = Cart.objects.get(pk=cart_id)
+    cart_items = CartItem.objects.filter(cart=cart)
+
     response['cart'] = cart
-    response['cart_items'] = CartItem.objects.filter(cart=cart)
+    response['cart_items'] = cart_items
 
     return render_to_response(template_name, response, context_instance=RequestContext(request))
 
+@login_required
 def add_product_to_cart(request):
     cart = None
 
@@ -82,12 +88,27 @@ def add_product_to_cart(request):
         # Check the cart items to see if the product was added previously
         if not cart_item:
             # Create Cart Item
-            cart_item = CartItem(cart=cart, product=product, quantity=quantity)
+            total = product.price * Decimal(quantity)
+
+            cart_item = CartItem(cart=cart, product=product, quantity=quantity, total=total)
             cart_item.save()
         else:
             # Increment the Item
-            cart_item.quantity = F('quantity') + quantity
+            new_quantity = cart_item.quantity + quantity
+            cart_item.total = product.price * Decimal(new_quantity)
+            cart_item.quantity = new_quantity
             cart_item.save()
+
+        # Recalculate the cart total
+        cart_items = CartItem.objects.filter(cart=cart)
+        new_cart_total = Decimal('0.0')
+
+        for item in cart_items:
+            new_cart_total = new_cart_total + item.total
+
+        if new_cart_total:
+            cart.total = new_cart_total
+            cart.save()
 
         return redirect('view_cart', cart_id=cart.pk)
 

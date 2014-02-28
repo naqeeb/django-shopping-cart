@@ -10,19 +10,22 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     store = models.ManyToManyField('core.Store', through='UserStoreProfile')
 
+    def __unicode__(self):
+        return u'%s' % (self.user.email)
+
     class Meta:
         db_table = 'user_profile'
 
 
 class UserStoreProfile(models.Model):
-    user =  models.ForeignKey(UserProfile)
+    user_profile =  models.ForeignKey(UserProfile)
     store = models.ForeignKey('core.Store')
 
     class Meta:
         db_table = 'user_store_profile'
 
 class UserAddress(models.Model):
-    user = models.ForeignKey(UserProfile)
+    user_profile = models.ForeignKey(UserProfile)
     address_1 = models.CharField(max_length=128)
     address_2 = models.CharField(max_length=128, blank=True)
     city = models.CharField(max_length=64)

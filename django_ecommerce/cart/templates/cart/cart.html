@@ -4,12 +4,11 @@
 <div name="content">
     <div name="cart" style="display: table; width:100%;">
     {% for item in cart_items %}
-        <div name="cart-item" style="display: table-cell;">
-            <div style="width:20%;">{{item.product.name}}</div><br/>
-            <div style="width:20%;">{{item.quantity}}</div>
-            <div style="width:20%;">{{item.product.price}}</div><br/>
-            <div style="width:20%;">Total: {% multiply item.quantity item.product.price %} </div>
+        <div name="cart-item" style="font-size: 16px">
+            <div>{{ item.product.name }} | {{ item.quantity }} | {{ item.product.price }} | {{ item.total }}</div>
         </div>
     {% endfor %}
     </div>
+    <a href="{%url 'home' %}">Continue Shopping</a>
+    <a href="{%url 'checkout' %}">Checkout</a>
 </div>
