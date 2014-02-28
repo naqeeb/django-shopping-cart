@@ -1,0 +1,188 @@
+[
+{
+  "pk": 1,
+  "model": "sites.site",
+  "fields": {
+    "domain": "store1.example.com",
+    "name": "Store 1"
+  }
+},
+{
+  "pk": 2,
+  "model": "sites.site",
+  "fields": {
+    "domain": "store2.example.com",
+    "name": "Store 2"
+  }
+},
+{
+  "pk": 3,
+  "model": "sites.site",
+  "fields": {
+    "domain": "store3.example.com",
+    "name": "Store 3"
+  }
+},
+{
+  "pk": 1,
+  "model": "core.store",
+  "fields": {
+    "name": "Store 1",
+    "site": 1
+  }
+},
+{
+  "pk": 2,
+  "model": "core.store",
+  "fields": {
+    "name": "Store 2",
+    "site": 2
+  }
+},
+{
+  "pk": 3,
+  "model": "core.store",
+  "fields": {
+    "name": "Store 3",
+    "site": 3
+  }
+},
+{
+  "pk": 1,
+  "model": "product.product",
+  "fields": {
+    "sku": "AAPL-0121",
+    "price": "299.99",
+    "name": "Apple iPad",
+    "description": "Expensive. Different"
+  }
+},
+{
+  "pk": 2,
+  "model": "product.product",
+  "fields": {
+    "sku": "AAPL-FAIL-1",
+    "price": "99.99",
+    "name": "Apple IPod",
+    "description": "People still buy these things"
+  }
+},
+{
+  "pk": 3,
+  "model": "product.product",
+  "fields": {
+    "sku": "FAKE-01",
+    "price": "121.77",
+    "name": "Test Product",
+    "description": "The best product you've never heard off"
+  }
+},
+{
+  "pk": 1,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 2,
+    "store": 1
+  }
+},
+{
+  "pk": 2,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 1,
+    "store": 1
+  }
+},
+{
+  "pk": 3,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 3,
+    "store": 1
+  }
+},
+{
+  "pk": 4,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 2,
+    "store": 2
+  }
+},
+{
+  "pk": 5,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 3,
+    "store": 1
+  }
+},
+{
+  "pk": 6,
+  "model": "product.storeproduct",
+  "fields": {
+    "active": true,
+    "product": 3,
+    "store": 1
+  }
+},
+
+{
+  "pk": 1,
+  "model": "product.productattribute",
+  "fields": {
+    "name": "color"
+  }
+},
+{
+  "pk": 2,
+  "model": "product.productattribute",
+  "fields": {
+    "name": "size"
+  }
+},
+{
+  "pk": 3,
+  "model": "product.productattribute",
+  "fields": {
+    "name": "dimensions"
+  }
+},
+{
+  "pk": 4,
+  "model": "product.productattribute",
+  "fields": {
+    "name": "fun_factor"
+  }
+},
+{
+  "pk": 1,
+  "model": "product.productattributevalue",
+  "fields": {
+    "attribute": 1,
+    "product": 2,
+    "value": "black"
+  }
+},
+{
+  "pk": 2,
+  "model": "product.productattributevalue",
+  "fields": {
+    "attribute": 2,
+    "product": 3,
+    "value": "big"
+  }
+},
+{
+  "pk": 1,
+  "model": "auth.group",
+  "fields": {
+    "name": "client"
+  }
+}
+]
