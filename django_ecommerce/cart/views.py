@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import get_current_site
 from django.db.models import F
 from django.shortcuts import redirect, render_to_response, get_object_or_404
@@ -11,6 +12,7 @@ from .models import Cart, CartItem
 from .forms import AddProductToCartForm
 
 
+@login_required
 def view_cart(request, cart_id, template_name='cart/cart.html'):
     response = {
         'store': None,
@@ -33,6 +35,7 @@ def view_cart(request, cart_id, template_name='cart/cart.html'):
 
     return render_to_response(template_name, response, context_instance=RequestContext(request))
 
+@login_required
 def add_product_to_cart(request):
     cart = None
 
