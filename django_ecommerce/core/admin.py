@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from django.contrib.sites.models import Site
-from .models import Store, Product, StoreProduct, ProductAttribute, ProductAttributeValue
+from core.models import Store
+from product.models import Product, StoreProduct, ProductAttribute, ProductAttributeValue
 
 from django.utils.translation import ugettext_lazy as _
 
