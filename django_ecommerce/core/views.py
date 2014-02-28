@@ -121,18 +121,6 @@ def add_product_to_cart(request):
     return redirect('home')
 
 
-def prepare_checkout(request, template_name='core/checkout.html'):
-    pass
-    # Find the cart
-
-    # Check out only for logged in users
-
-
-def checkout(request, template_name='core/checkout.html'):
-    pass
-    # Convert cart to order
-
-
 def home(request, template_name='core/store.html'):
     response = {
         'store': None,
