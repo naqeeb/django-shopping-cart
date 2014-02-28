@@ -20,7 +20,7 @@ class Order(models.Model):
     total = models.DecimalField(max_digits=9, decimal_places=2)
 
     class Meta:
-        db_table = 'order'
+        db_table = 'orders'
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order)
