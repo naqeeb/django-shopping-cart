@@ -1,4 +1,3 @@
-from django.contrib.sites.models import get_current_site
 from django.db.models import F
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -17,11 +16,8 @@ def home(request, template_name='core/store.html'):
         if not request.session.exists(request.session.session_key):
             request.session.create()
 
-    # Get the current site
-    site = get_current_site(request)
-
     # Get the current store
-    store = Store.objects.filter(site=site)
+    store = Store.objects.filter(id=1)
     response['store'] = store
 
     store_products = StoreProduct.objects.filter(store=store, active=True)

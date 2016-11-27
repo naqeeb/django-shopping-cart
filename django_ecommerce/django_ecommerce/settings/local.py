@@ -28,7 +28,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,25 +36,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_extensions',
+    #'django_extensions',
     'django_ecommerce',
-    'registration',
     'core',
     'cart',
     'checkout',
     'product',
-    'localflavor',
-    'profile',
-    'south'
+    'profile'
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
 
 ROOT_URLCONF = 'django_ecommerce.urls'
@@ -69,7 +66,7 @@ WSGI_APPLICATION = 'django_ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR + '.store1.sqlite3'),
+        'NAME': '/tmp/local.sqlite3',
     }
 }
 
@@ -97,8 +94,6 @@ STATIC_URL = '/static/'
 # Auth Profile
 AUTH_PROFILE_MODULE = "profile.UserProfile"
 
-# sites
-SITE_ID = 1
 
 # django-registration
 ACCOUNT_ACTIVATION_DAYS = 7

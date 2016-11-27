@@ -1,10 +1,8 @@
 from django.db import models
-from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 
 class Store(models.Model):
     name = models.CharField(max_length=255)
-    site = models.OneToOneField(Site)
 
     def __unicode__(self):
         return u'%s' % (self.name)

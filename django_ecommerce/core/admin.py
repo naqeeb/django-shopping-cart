@@ -11,8 +11,8 @@ from .utils import limit_qs_by_user, get_products_by_user
 
 
 class StoreAdmin(admin.ModelAdmin):
-    list_display = ('name', 'site')
-    search_fields = ('name', 'site')
+    list_display = ('name',)
+    search_fields = ('name',)
 
     def queryset(self, request):
         qs = super(StoreAdmin, self).queryset(request)

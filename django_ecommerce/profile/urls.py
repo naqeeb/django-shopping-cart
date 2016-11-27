@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 import signals
 
-urlpatterns = patterns('',
-    url(r'', include('registration.backends.default.urls')),
-)
+urlpatterns = [
+    url(r'', include('registration.backends.hmac.urls')),
+]

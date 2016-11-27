@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.sites.models import get_current_site
 from django.db.models import F
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -16,11 +15,8 @@ def checkout(request, template_name='checkout/complete.html'):
         'order_items': None
     }
 
-    # Get the current site
-    site = get_current_site(request)
-
     # Get the current store
-    store = Store.objects.get(site=site)
+    store = Store.objects.get(id=1)
 
     cart = Cart.objects.get(user=request.user)
     cart_items = CartItem.objects.filter(cart=cart)

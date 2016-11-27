@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.sites.models import get_current_site
 from django.db.models import F
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -21,10 +20,7 @@ def view_cart(request, cart_id, template_name='cart/cart.html'):
     }
 
     # Get the current site
-    site = get_current_site(request)
-
-    # Get the current store
-    store = Store.objects.get(site=site)
+    store = Store.objects.get(id=1)
 
     response['store'] = store
     cart = Cart.objects.get(pk=cart_id)
