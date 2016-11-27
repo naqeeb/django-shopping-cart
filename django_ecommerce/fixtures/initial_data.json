@@ -1,50 +1,23 @@
 [
 {
   "pk": 1,
-  "model": "sites.site",
+  "model": "core.store",
   "fields": {
-    "domain": "store1.example.com",
     "name": "Store 1"
   }
 },
 {
   "pk": 2,
-  "model": "sites.site",
+  "model": "core.store",
   "fields": {
-    "domain": "store2.example.com",
     "name": "Store 2"
   }
 },
 {
   "pk": 3,
-  "model": "sites.site",
+  "model": "core.store",
   "fields": {
-    "domain": "store3.example.com",
     "name": "Store 3"
-  }
-},
-{
-  "pk": 1,
-  "model": "core.store",
-  "fields": {
-    "name": "Store 1",
-    "site": 1
-  }
-},
-{
-  "pk": 2,
-  "model": "core.store",
-  "fields": {
-    "name": "Store 2",
-    "site": 2
-  }
-},
-{
-  "pk": 3,
-  "model": "core.store",
-  "fields": {
-    "name": "Store 3",
-    "site": 3
   }
 },
 {
