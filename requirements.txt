@@ -4,3 +4,4 @@ django-registration==2.2
 south==0.8.4
 djrill==0.9
 django-localflavor==1.0.0
+MySQL-python==1.2.5
