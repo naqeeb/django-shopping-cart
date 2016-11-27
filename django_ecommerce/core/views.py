@@ -1,5 +1,5 @@
 from django.db.models import F
-from django.shortcuts import redirect, render_to_response, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 from .models import Store
@@ -24,6 +24,6 @@ def home(request, template_name='core/store.html'):
     products = [store.product for store in store_products]
     response['products'] = products
 
-    return render_to_response(template_name, response, context_instance=RequestContext(request))
+    return render(request,template_name, context=response)
 
 

@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
-from django.shortcuts import redirect, render_to_response, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 from core.models import Store
@@ -29,17 +29,14 @@ def view_cart(request, cart_id, template_name='cart/cart.html'):
     response['cart'] = cart
     response['cart_items'] = cart_items
 
-    return render_to_response(template_name, response, context_instance=RequestContext(request))
+    return render(request, template_name, context=response)
 
 @login_required
 def add_product_to_cart(request):
     cart = None
 
-    # Get the current site
-    site = get_current_site(request)
-
     # Get the current store
-    store = Store.objects.get(site=site)
+    store = Store.objects.get(id=1)
 
     form = AddProductToCartForm(request.POST or None)
 

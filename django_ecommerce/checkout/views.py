@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
-from django.shortcuts import redirect, render_to_response, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 import random
@@ -36,4 +36,4 @@ def checkout(request, template_name='checkout/complete.html'):
     response['order_items'] = order_items
     cart.delete()
 
-    return render_to_response(template_name, response, context_instance=RequestContext(request))
+    return render(request, template_name, context=response)

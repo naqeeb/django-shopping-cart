@@ -1,5 +1,5 @@
 from django.db.models import F
-from django.shortcuts import redirect, render_to_response, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 from cart.forms import AddProductToCartForm
@@ -20,7 +20,7 @@ def product_detail(request, product_sku, template_name='product/product.html'):
     }
 
     # Get the current store
-    store = Store.objects.filter(site=site)
+    store = Store.objects.filter(id=1)
     response['store'] = store
 
     # Get the store and the product based on the sku
@@ -38,4 +38,4 @@ def product_detail(request, product_sku, template_name='product/product.html'):
 
     response['add_to_cart_form'] = AddProductToCartForm(initial={'sku': store_product.product.sku })
 
-    return render_to_response(template_name, response, context_instance=RequestContext(request))
+    return render(request, template_name, context=response)
