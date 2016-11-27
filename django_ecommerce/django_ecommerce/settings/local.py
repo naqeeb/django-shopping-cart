@@ -22,10 +22,9 @@ SECRET_KEY = 'wp^3rpp&2za379=2=wbeqo7#1cx)k%zh&@y%3wmfvc&kcxhgx('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 INSTALLED_APPS = (
@@ -54,6 +53,21 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages'
+            ],
+        }
+    },
+]
 
 ROOT_URLCONF = 'django_ecommerce.urls'
 

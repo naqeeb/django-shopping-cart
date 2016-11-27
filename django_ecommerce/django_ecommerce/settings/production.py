@@ -22,13 +22,11 @@ SECRET_KEY = 'wp^3rpp&2za379=2=wbeqo7#1cx)k%zh&@y%3wmfvc&kcxhgx('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,26 +35,39 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_extensions',
+    #'django_extensions',
     'django_ecommerce',
-    'registration',
     'core',
     'cart',
     'checkout',
     'product',
-    'localflavor',
-    'profile',
-    'south'
+    'profile'
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages'
+            ],
+        }
+    },
+]
 
 ROOT_URLCONF = 'django_ecommerce.urls'
 
@@ -69,7 +80,7 @@ WSGI_APPLICATION = 'django_ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR + '.store3.sqlite3'),
+        'NAME': '/tmp/local.sqlite3',
     }
 }
 
@@ -97,8 +108,6 @@ STATIC_URL = '/static/'
 # Auth Profile
 AUTH_PROFILE_MODULE = "profile.UserProfile"
 
-# sites
-SITE_ID = 1
 
 # django-registration
 ACCOUNT_ACTIVATION_DAYS = 7
