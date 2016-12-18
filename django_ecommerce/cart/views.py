@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 from core.models import Store
-from product.models import Product, StoreProduct
+from product.models import Product
 from .models import Cart, CartItem
 from .forms import AddProductToCartForm
 
