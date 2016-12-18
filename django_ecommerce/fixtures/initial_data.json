@@ -27,7 +27,9 @@
     "sku": "AAPL-0121",
     "price": "299.99",
     "name": "Apple iPad",
-    "description": "Expensive. Different"
+    "description": "Expensive. Different",
+    "active": true,
+    "store": 1
   }
 },
 {
@@ -37,7 +39,9 @@
     "sku": "AAPL-FAIL-1",
     "price": "99.99",
     "name": "Apple iPod",
-    "description": "People still buy these things"
+    "description": "People still buy these things",
+    "active": true,
+    "store": 1
   }
 },
 {
@@ -47,64 +51,11 @@
     "sku": "FAKE-01",
     "price": "121.77",
     "name": "Test Product",
-    "description": "The best product you've never heard off"
-  }
-},
-{
-  "pk": 1,
-  "model": "product.storeproduct",
-  "fields": {
+    "description": "The best product you've never heard off",
     "active": true,
-    "product": 2,
     "store": 1
   }
 },
-{
-  "pk": 2,
-  "model": "product.storeproduct",
-  "fields": {
-    "active": true,
-    "product": 1,
-    "store": 1
-  }
-},
-{
-  "pk": 3,
-  "model": "product.storeproduct",
-  "fields": {
-    "active": true,
-    "product": 3,
-    "store": 1
-  }
-},
-{
-  "pk": 4,
-  "model": "product.storeproduct",
-  "fields": {
-    "active": true,
-    "product": 2,
-    "store": 2
-  }
-},
-{
-  "pk": 5,
-  "model": "product.storeproduct",
-  "fields": {
-    "active": true,
-    "product": 3,
-    "store": 3
-  }
-},
-{
-  "pk": 6,
-  "model": "product.storeproduct",
-  "fields": {
-    "active": true,
-    "product": 3,
-    "store": 3
-  }
-},
-
 {
   "pk": 1,
   "model": "product.productattribute",
