@@ -24,6 +24,7 @@ class UserStoreProfile(models.Model):
     class Meta:
         db_table = 'user_store_profile'
 
+
 class UserAddress(models.Model):
     user_profile = models.ForeignKey(UserProfile)
     address_1 = models.CharField(max_length=128)
@@ -31,7 +32,7 @@ class UserAddress(models.Model):
     city = models.CharField(max_length=64)
     state = USStateField()
     zip_code = models.CharField(max_length=5)
-    type = models.CharField(max_length=100, choices=[(x,x) for x in constants.USER_ADDRESS_TYPES])
+    address_type = models.CharField(max_length=100, choices=[(x,x) for x in constants.USER_ADDRESS_TYPES])
 
     class Meta:
-        db_table = 'user_address'
+        db_table = 'user_addresses'
