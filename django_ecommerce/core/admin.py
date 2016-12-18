@@ -4,10 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from core.models import Store, Order, OrderItem
 from cart.models import Cart, CartItem
-from product.models import Product, StoreProduct, ProductAttribute, ProductAttributeValue
+from product.models import Product, ProductAttribute, ProductAttributeValue
 from profile.models import UserProfile, UserStoreProfile
 
-from .utils import limit_qs_by_user, get_products_by_user
+from .utils import limit_qs_by_user
 
 
 class StoreAdmin(admin.ModelAdmin):
@@ -20,27 +20,26 @@ class StoreAdmin(admin.ModelAdmin):
 
 admin.site.register(Store, StoreAdmin)
 
+
 class UserStoreProfileAdmin(admin.ModelAdmin):
     list_display = ('user_profile','store')
 
 admin.site.register(UserStoreProfile, UserStoreProfileAdmin)
 
 
-class StoreProductInline(admin.TabularInline):
-    model = StoreProduct
-    extra = 1
-
 class ProductAttributeValueInline(admin.TabularInline):
     model = ProductAttributeValue
     extra = 1
 
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'price', 'sku')
-    search_fields = ('name', 'description')
-    inlines= [ProductAttributeValueInline, StoreProductInline]
 
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'price', 'sku', 'active')
+    list_filter = ('store__name', 'active')
+    search_fields = ('name', 'description')
+    inlines= [ProductAttributeValueInline]
 
 admin.site.register(Product, ProductAdmin)
+
 
 class ProductAttributeAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -89,14 +88,3 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ('order__external_id', 'product__name', 'product__sku')
 
 admin.site.register(OrderItem, OrderItemAdmin)
-
-class StoreProductAdmin(admin.ModelAdmin):
-    list_display = ('product', 'store', 'active')
-    search_fields = ('product__name',)
-    list_filter = ('store__name', 'active')
-
-    def queryset(self, request):
-        qs = super(StoreProductAdmin, self).queryset(request)
-        return limit_qs_by_user(request.user, qs)
-
-admin.site.register(StoreProduct, StoreProductAdmin)

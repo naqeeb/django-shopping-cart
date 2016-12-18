@@ -1,5 +1,5 @@
 from profile.models import UserStoreProfile, UserProfile
-from product.models import StoreProduct
+from product.models import Product
 
 def get_stores_by_user(user):
     stores = None
@@ -26,7 +26,7 @@ def get_products_by_user(user, qs):
 
     stores = get_stores_by_user(user)
     if stores:
-        store_products = StoreProduct.objects.filter(store__in=stores)
+        store_products = Product.objects.filter(store=store)
         products = [store_product.product for store_product in store_products]
         return products
 

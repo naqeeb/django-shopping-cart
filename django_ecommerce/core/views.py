@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.template import RequestContext
 
 from .models import Store
-from product.models import Product, StoreProduct
+from product.models import Product
 
 def home(request, template_name='core/store.html'):
     response = {
@@ -20,8 +20,7 @@ def home(request, template_name='core/store.html'):
     store = Store.objects.filter(id=1)
     response['store'] = store
 
-    store_products = StoreProduct.objects.filter(store=store, active=True)
-    products = [store.product for store in store_products]
+    products = Product.objects.filter(store=store, active=True)
     response['products'] = products
 
     return render(request,template_name, context=response)
