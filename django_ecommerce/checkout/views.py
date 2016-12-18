@@ -6,6 +6,7 @@ from django.template import RequestContext
 import random
 from core.models import Store, Order, OrderItem
 from cart.models import Cart, CartItem
+from core.services import CreateOrderService
 
 @login_required
 def checkout(request, template_name='checkout/complete.html'):
@@ -22,14 +23,17 @@ def checkout(request, template_name='checkout/complete.html'):
     cart_items = CartItem.objects.filter(cart=cart)
 
     # Create Order
-    order_number = random.randint(100000, 900000)
-    order = Order.objects.create(store=store, user=request.user, external_id=order_number, total=cart.total, status='New')
+    create_order_service = CreateOrderService(request.user, store)
+    order = create_order_service.create(cart.total)
     response['order'] = order
 
     # Convert cart to order
     order_items = []
     for cart_item in cart_items:
-        order_item = OrderItem.objects.create(order=order, quantity=cart_item.quantity, price=cart_item.product.price, product=cart_item.product)
+        order_item = OrderItem.objects.create(order=order,
+                                              quantity=cart_item.quantity,
+                                              price=cart_item.product.price,
+                                              product=cart_item.product)
         order_items.append(order_item)
         cart_item.delete()
 
