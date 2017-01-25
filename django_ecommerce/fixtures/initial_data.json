@@ -24,6 +24,7 @@
   "pk": 1,
   "model": "product.product",
   "fields": {
+    "external_id": "A1",
     "sku": "AAPL-0121",
     "price": "299.99",
     "name": "Apple iPad",
@@ -36,6 +37,7 @@
   "pk": 2,
   "model": "product.product",
   "fields": {
+    "external_id": "A2",
     "sku": "AAPL-FAIL-1",
     "price": "99.99",
     "name": "Apple iPod",
@@ -48,6 +50,7 @@
   "pk": 3,
   "model": "product.product",
   "fields": {
+    "external_id": "A3",
     "sku": "FAKE-01",
     "price": "121.77",
     "name": "Test Product",

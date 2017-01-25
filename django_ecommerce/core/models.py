@@ -24,7 +24,7 @@ class Order(models.Model):
         db_table = 'orders'
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order)
+    order = models.ForeignKey(Order, related_name='items')
     product = models.ForeignKey('product.Product')
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
