@@ -11,6 +11,11 @@ class Store(models.Model):
         db_table = 'store'
 
 class Order(models.Model):
+    STATUS_NEW = 'new'
+    STATUS_PROCESSED = 'processed'
+    STATUS_SHIPPED = 'shipped'
+    STATUS_COMPLETE = 'complete'
+
     store = models.ForeignKey(Store)
     user = models.ForeignKey(User)
     external_id = models.CharField(max_length=100)
