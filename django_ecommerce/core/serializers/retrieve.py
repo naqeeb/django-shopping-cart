@@ -1,9 +1,15 @@
 from rest_framework import serializers
-from core.models import Order, OrderItem
 
-class OrderItemRetrieveSerializer(serializers.ModelSerializer):
-    product = serializers.SlugRelatedField(read_only=True, slug_field='external_id')
+from core.models import Order, OrderItem
+from .common import OrderItemInlineSerializer
+
+__all__ = ['OrderRetrieveSerializer']
+
+
+class OrderRetrieveSerializer(serializers.ModelSerializer):
+    items = OrderItemInlineSerializer(many=True, read_only=True)
 
     class Meta:
-        model = OrderItem
-        fields = ('product', 'quantity', 'price')
+        model = Order
+        fields = ('external_id', 'status', 'items', 'total')
+
