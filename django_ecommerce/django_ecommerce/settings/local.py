@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'cart',
     'checkout',
     'product',
-    'profile'
+    'profile',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,3 +122,11 @@ DEFAULT_FROM_EMAIL = 'info@ordergroove.com'
 # djrill
 MANDRILL_API_KEY = "vNNY9fltdIHbLtrH2YU0RA"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

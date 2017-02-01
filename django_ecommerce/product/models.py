@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     store = models.ForeignKey('core.Store')
     name = models.CharField(max_length=255)
+    external_id = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
     sku = models.CharField(max_length=255, null=True)

@@ -1,0 +1,175 @@
+[{
+    "model": "core.store",
+    "pk": 1,
+    "fields": {
+        "name": "Test Store"
+    }
+}, {
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+        "store": 1,
+        "name": "Apple iPad",
+        "external_id": "A1",
+        "description": "Expensive. Different",
+        "price": "299.99",
+        "sku": "AAPL-0121",
+        "active": true
+    }
+}, {
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+        "store": 1,
+        "name": "Apple iPod",
+        "external_id": "A2",
+        "description": "People still buy these things",
+        "price": "99.99",
+        "sku": "AAPL-FAIL-1",
+        "active": true
+    }
+}, {
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+        "store": 1,
+        "name": "Test Product",
+        "external_id": "A3",
+        "description": "The best product you've never heard off",
+        "price": "121.77",
+        "sku": "FAKE-01",
+        "active": true
+    }
+}, {
+    "model": "product.productattribute",
+    "pk": 1,
+    "fields": {
+        "name": "color"
+    }
+}, {
+    "model": "product.productattribute",
+    "pk": 2,
+    "fields": {
+        "name": "size"
+    }
+}, {
+    "model": "product.productattribute",
+    "pk": 3,
+    "fields": {
+        "name": "dimensions"
+    }
+}, {
+    "model": "product.productattribute",
+    "pk": 4,
+    "fields": {
+        "name": "fun_factor"
+    }
+}, {
+    "model": "product.productattribute",
+    "pk": 5,
+    "fields": {
+        "name": "image_url"
+    }
+}, {
+    "model": "product.productattributevalue",
+    "pk": 1,
+    "fields": {
+        "product": 2,
+        "attribute": 1,
+        "value": "black"
+    }
+}, {
+    "model": "product.productattributevalue",
+    "pk": 2,
+    "fields": {
+        "product": 3,
+        "attribute": 2,
+        "value": "big"
+    }
+}, {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "last_login": "2017-01-25T05:38:34.332Z",
+        "is_superuser": false,
+        "username": "testuser",
+        "first_name": "Test",
+        "last_name": "User",
+        "email": "test@me.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-01-25T05:37:56.506Z"
+    }
+}, {
+    "model": "core.order",
+    "pk": 1,
+    "fields": {
+        "store": 1,
+        "user": 1,
+        "external_id": "258836",
+        "status": "New",
+        "total": "243.54"
+    }
+}, {
+    "model": "core.order",
+    "pk": 2,
+    "fields": {
+        "store": 1,
+        "user": 1,
+        "external_id": "305742",
+        "status": "New",
+        "total": "365.31"
+    }
+}, {
+    "model": "core.order",
+    "pk": 3,
+    "fields": {
+        "store": 1,
+        "user": 1,
+        "external_id": "192157",
+        "status": "New",
+        "total": "399.98"
+    }
+}, {
+    "model": "core.orderitem",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "product": 3,
+        "quantity": 2,
+        "price": "121.77"
+    }
+}, {
+    "model": "core.orderitem",
+    "pk": 2,
+    "fields": {
+        "order": 2,
+        "product": 3,
+        "quantity": 3,
+        "price": "121.77"
+    }
+}, {
+    "model": "core.orderitem",
+    "pk": 3,
+    "fields": {
+        "order": 3,
+        "product": 1,
+        "quantity": 1,
+        "price": "299.99"
+    }
+}, {
+    "model": "core.orderitem",
+    "pk": 4,
+    "fields": {
+        "order": 3,
+        "product": 2,
+        "quantity": 1,
+        "price": "99.99"
+    }
+}, {
+    "model": "profile.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1
+    }
+}]
