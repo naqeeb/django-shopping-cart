@@ -8,7 +8,7 @@ from core.models import Store, Order, OrderItem
 
 User = get_user_model()
 
-class OrderListTestCase(TestCase):
+class OrderViewSetTestCase(TestCase):
     fixtures = ['store_setup.json']
 
     def setUp(self):
