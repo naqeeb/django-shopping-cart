@@ -19,7 +19,7 @@ class OrderListTestCase(TestCase):
     def get(self, url):
         return self.client.get(url, format='json')
 
-    def test_order_retrieval(self):
+    def test_order_list_all(self):
         url = '/orders'
         expected_response = [{
                 "external_id": "258836",
@@ -55,7 +55,7 @@ class OrderListTestCase(TestCase):
         actual_response = simplejson.loads(response.content)
         self.assertItemsEqual(actual_response, expected_response)
 
-    def test_order_retrieval_by_item(self):
+    def test_order_retrieval_by_id(self):
         url = '/orders/3'
         expected_response = {
                 "external_id": "192157",
